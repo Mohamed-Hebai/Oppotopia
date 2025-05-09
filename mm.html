@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Float Button with Modal</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* زر عائم */
+      .float-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      /* المودال */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        position: relative;
+      }
+
+      /* زر الإغلاق */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- الزر العائم -->
+    <button class="float-button" id="openModal">+</button>
+
+    <!-- المودال -->
+    <div class="modal" id="myModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>مرحبا!</h2>
+        <p>دي النافذة اللي بتظهر بعد الضغط على الزر.</p>
+      </div>
+    </div>
+
+    <script>
+      // فتح المودال
+      document.getElementById("openModal").onclick = function () {
+        document.getElementById("myModal").style.display = "block";
+      };
+
+      // إغلاق المودال
+      document.getElementById("closeModal").onclick = function () {
+        document.getElementById("myModal").style.display = "none";
+      };
+
+      // كمان لو ضغط بره المودال يقفله
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("myModal")) {
+          document.getElementById("myModal").style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
